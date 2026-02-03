@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Games | Master Directory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mario-sky: #5c94fc;
+            --mario-green: #70c05a;
+            --coin-yellow: #fcd800;
+            --retro-brown: #8d6e63; /* Classic retro aesthetic color */
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(to bottom, var(--mario-sky) 0%, var(--mario-green) 100%);
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.85);
+            border: 6px solid #000;
+            padding: 20px;
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.4);
+        }
+
+        .header-banner {
+            background-color: var(--mario-green); /* Matches the green header in your spreadsheet */
+            color: #000;
+            padding: 20px;
+            border: 4px solid #000;
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .link-card {
+            background: #fff;
+            color: #000;
+            padding: 25px;
+            text-decoration: none;
+            border: 4px solid #000;
+            font-size: 0.7rem;
+            transition: 0.1s;
+            display: block;
+        }
+
+        .link-card:hover {
+            background: var(--coin-yellow);
+            transform: scale(1.05);
+            box-shadow: 5px 5px 0px #000;
+        }
+
+        .back-nav {
+            margin-top: 40px;
+            display: inline-block;
+            color: var(--coin-yellow);
+            text-decoration: none;
+            font-size: 0.7rem;
+            padding: 15px;
+            border: 4px double var(--coin-yellow);
+        }
+
+        .back-nav:hover {
+            background: var(--coin-yellow);
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-banner">RETRO GAMES</div>
+        
+        <div class="grid">
+            <a href="https://vimm.net/" target="_blank" class="link-card">RETRO GAME COLLECTION</a>
+        </div>
+
+        <a href="games.html" class="back-nav"><< BACK TO GAMES</a>
+    </div>
+
+</body>
+</html>
