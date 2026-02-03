@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extras | Master Directory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mario-sky: #5c94fc;
+            --mario-green: #70c05a;
+            --coin-yellow: #fcd800;
+            --extra-gold: #ffd54f; /* The light yellow from your spreadsheet */
+            --menu-green: #4caf50; /* The green from your MENU button */
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(to bottom, var(--mario-sky) 0%, var(--mario-green) 100%);
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.85);
+            border: 6px solid #000;
+            padding: 20px;
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.4);
+        }
+
+        /* Matches the 'EXTRAS' header from your image */
+        .header-banner {
+            background-color: var(--extra-gold);
+            color: #000;
+            padding: 25px;
+            border: 4px solid #000;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            text-shadow: 2px 2px rgba(255,255,255,0.5);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            /* Side accent inspired by your green MENU button */
+            border-left: 15px solid var(--menu-green);
+            padding-left: 20px;
+        }
+
+        .link-card {
+            background: #fff;
+            color: #000;
+            padding: 20px;
+            text-decoration: none;
+            border: 4px solid #000;
+            font-size: 0.6rem;
+            transition: 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+        }
+
+        .link-card:hover {
+            background: var(--coin-yellow);
+            transform: scale(1.03);
+            box-shadow: 5px 5px 0px #000;
+        }
+
+        .back-nav {
+            margin-top: 40px;
+            display: inline-block;
+            color: var(--coin-yellow);
+            background: rgba(0,0,0,0.6);
+            padding: 15px;
+            text-decoration: none;
+            font-size: 0.7rem;
+            border: 4px double var(--coin-yellow);
+        }
+
+        .back-nav:hover {
+            background: var(--menu-green);
+            color: #fff;
+            border-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-banner">EXTRAS</div>
+        
+        <div class="grid">
+            <a href="https://yarrlist.com/" target="_blank" class="link-card">YARRLIST</a>
+            <a href="#" class="link-card">OPEN SOURCE LIBRARY</a>
+            <a href="#" class="link-card">FREE MEDIA OTHERS</a>
+            <a href="https://neal.fun/" target="_blank" class="link-card">BORED (NEAL.FUN)</a>
+            <a href="https://huggingface.co/" target="_blank" class="link-card">HUGGING FACE</a>
+        </div>
+
+        <a href="https://adrian10181.github.io/MASTER-DIRECTORY/" class="back-nav"><< RETURN TO HUB</a>
+    </div>
+
+</body>
+</html>
