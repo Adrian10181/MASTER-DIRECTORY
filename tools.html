@@ -10,8 +10,7 @@
             --mario-sky: #5c94fc;
             --mario-green: #70c05a;
             --coin-yellow: #fcd800;
-            --tool-purple: #9c27b0;
-            --tool-orange: #ff9800;
+            --tool-green: #c5e1a5; 
         }
 
         body {
@@ -25,7 +24,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: auto;
             background: rgba(0, 0, 0, 0.85);
             border: 6px solid #000;
@@ -33,30 +32,27 @@
             box-shadow: 10px 10px 0px rgba(0,0,0,0.4);
         }
 
-        .section-header-purple {
-            background-color: var(--tool-purple);
-            color: #fff;
-            padding: 15px;
+        .header-banner {
+            background-color: var(--tool-green);
+            color: #000;
+            padding: 20px;
             border: 4px solid #000;
-            margin: 20px 0;
-            font-size: 0.9rem;
-            text-shadow: 2px 2px #000;
+            margin-bottom: 30px;
+            font-size: 1.2rem;
         }
 
-        .section-header-orange {
-            background-color: var(--tool-orange);
-            color: #fff;
-            padding: 15px;
-            border: 4px solid #000;
-            margin: 40px 0 20px 0;
-            font-size: 0.9rem;
-            text-shadow: 2px 2px #000;
+        .section-title {
+            font-size: 0.8rem;
+            color: var(--coin-yellow);
+            margin: 30px 0 15px;
+            text-decoration: underline;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 15px;
+            margin-bottom: 20px;
         }
 
         .link-card {
@@ -67,8 +63,10 @@
             border: 4px solid #000;
             font-size: 0.6rem;
             transition: 0.1s;
-            display: block;
-            image-rendering: pixelated;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
         }
 
         .link-card:hover {
@@ -85,35 +83,34 @@
             font-size: 0.7rem;
             padding: 15px;
             border: 4px double var(--coin-yellow);
-            background: rgba(0,0,0,0.5);
-        }
-
-        .back-nav:hover {
-            background: var(--coin-yellow);
-            color: #000;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="section-header-purple">AI CHATBOTS</div>
+        <div class="header-banner">TOOLS CATEGORIES</div>
+
+        <div class="section-title">[ AI CHATBOTS ]</div>
         <div class="grid">
-            <a href="https://chatgpt.com/" target="_blank" class="link-card">CHATGPT</a>
-            <a href="https://gemini.google.com/" target="_blank" class="link-card">GEMINI AI</a>
-            <a href="https://claude.ai/" target="_blank" class="link-card">CLAUDE AI</a>
-            <a href="https://www.blackbox.ai/" target="_blank" class="link-card">BLACKBOX AI</a>
+            <a href="https://chat.openai.com/" target="_blank" class="link-card">CHATGPT</a>
+            <a href="https://gemini.google.com/" target="_blank" class="link-card">GEMINI</a>
+            <a href="https://claude.ai/" target="_blank" class="link-card">CLAUDE</a>
+            <a href="https://www.blackbox.ai/" target="_blank" class="link-card">BLACKBOX</a>
         </div>
 
-        <div class="section-header-orange">PRODUCTIVITY TOOLS</div>
+        <div class="section-title">[ CATEGORIES ]</div>
         <div class="grid">
-            <a href="https://www.ilovepdf.com/" target="_blank" class="link-card">I LOVE PDF</a>
-            <a href="https://www.canva.com/" target="_blank" class="link-card">CANVA</a>
-            <a href="https://vocalremover.org/" target="_blank" class="link-card">VOCAL REMOVER</a>
-            <a href="https://tinywow.com/" target="_blank" class="link-card">TINY WOW</a>
+            <a href="#" class="link-card">PICTURE & VIDEO</a>
+            <a href="#" class="link-card">AUDIO & MUSIC</a>
+            <a href="#" class="link-card">TEXT, DOCS & PDF</a>
+            <a href="#" class="link-card">ICONS, ARTS & LAYOUTS</a>
+            <a href="#" class="link-card">JOBS, WORK RELATED</a>
+            <a href="#" class="link-card">BOOKS & LITERATURES</a>
+            <a href="#" class="link-card">SKILLS</a>
         </div>
 
-        <a href="https://adrian10181.github.io/MASTER-DIRECTORY/" class="back-nav"><< BACK TO WORLD SELECT</a>
+        <a href="index.html" class="back-nav"><< BACK TO WORLD SELECT</a>
     </div>
 
 </body>
