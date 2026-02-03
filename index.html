@@ -3,168 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Directory | Pixel Hub</title>
+    <title>Master Directory | World 1-1</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         :root {
-            --mario-sky: #5c94fc;
-            --mario-green: #70c05a;
-            --coin-yellow: #fcd800;
-            --ui-blue: #00adb5;
-            --brick-red: #ab3916;
+            --sky-blue: #6b8cff;
+            --grass-green: #2ecc71;
+            --ground-brown: #5d4037;
+            --ground-light: #795548;
+            --coin-gold: #f1c40f;
+            --coin-shadow: #d35400;
         }
 
-        body, html {
-            min-height: 100%;
+        * { box-sizing: border-box; }
+
+        body {
             margin: 0;
             padding: 0;
             font-family: 'Press Start 2P', cursive;
-            background: linear-gradient(to bottom, var(--mario-sky) 0%, var(--mario-sky) 60%, var(--mario-green) 60%, var(--mario-green) 100%);
-            background-attachment: fixed;
+            background-color: var(--sky-blue);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- REDUCED CRT EFFECT --- */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.05) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* --- SKY SECTION (With GIF Background) --- */
+        .sky-section {
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: hidden;
-        }
-
-        /* Decorative Background Elements */
-        .cloud {
-            position: absolute;
-            background: white;
-            width: 100px;
-            height: 30px;
-            box-shadow: 10px 10px 0 0 white, -10px 10px 0 0 white, 0 20px 0 0 white;
-            opacity: 0.8;
-            z-index: 1;
-            animation: moveClouds 60s linear infinite;
-        }
-
-        @keyframes moveClouds {
-            from { transform: translateX(-150vw); }
-            to { transform: translateX(150vw); }
-        }
-
-        .main-wrapper {
+            justify-content: center;
             position: relative;
-            z-index: 10;
-            text-align: center;
-            width: 90%;
-            max-width: 800px;
-            padding: 40px 0;
+            padding: 40px 20px 80px 20px;
+            
+            /* YOUR NEW CLOUD GIF */
+            background-image: url('https://media.giphy.com/media/kSb7rXfsha5V6fpW8C/giphy.gif');
+            background-repeat: repeat; /* Repeats to fill wide screens */
+            background-size: 500px; /* Adjust size of clouds */
+            background-position: center;
         }
 
-        .menu-container {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 40px;
-            border: 8px solid #000;
-            box-shadow: 10px 10px 0px rgba(0,0,0,0.3);
-            margin-bottom: 30px;
+        /* --- CHARACTER STAGE --- */
+        .character-stage {
+            position: absolute;
+            bottom: -5px; 
+            left: 0;
+            width: 100%;
+            height: 80px;
+            overflow: hidden;
+            z-index: 20; 
+            pointer-events: none;
         }
 
+        .sprite {
+            position: absolute;
+            bottom: 0;
+            image-rendering: pixelated; 
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+
+        @keyframes walkAcross {
+            from { transform: translateX(-100px); }
+            to { transform: translateX(100vw); }
+        }
+
+        /* --- KIRBY SETTINGS --- */
+        .kirby-walk {
+            height: 55px; 
+            animation: walkAcross 20s linear infinite;
+            filter: brightness(1.1) contrast(1.1) drop-shadow(2px 2px 0 rgba(0,0,0,0.2));
+        }
+
+        /* --- MAIN TITLE --- */
         h1 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: #fff;
-            margin-bottom: 40px;
-            text-shadow: 4px 4px 0px #000, 8px 8px 0px var(--brick-red);
+            text-align: center;
             line-height: 1.4;
+            margin-bottom: 40px;
+            text-shadow: 4px 4px 0 #000, 4px 8px 0 rgba(0,0,0,0.3);
+            animation: bounce 3s ease-in-out infinite;
+            z-index: 10;
         }
 
-        .main-grid {
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* --- MENU CONTAINER --- */
+        .menu-frame {
+            background: rgba(0, 0, 0, 0.8);
+            border: 4px solid #fff;
+            box-shadow: 10px 10px 0 #000;
+            padding: 10px;
+            border-radius: 4px;
+            z-index: 10;
+        }
+
+        .menu-inner {
+            border: 4px dashed #fff;
+            padding: 30px;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
 
-        .menu-item {
-            padding: 20px;
-            font-size: 0.7rem;
-            text-decoration: none;
+        .btn {
+            background: #e74c3c;
             color: #fff;
-            background: #333;
-            border: 4px solid #fff;
-            box-shadow: 5px 5px 0px #000;
-            transition: 0.1s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .menu-item:hover {
-            background: var(--ui-blue);
-            transform: scale(1.05);
-            box-shadow: 8px 8px 0px var(--coin-yellow);
-        }
-
-        /* About & Donation Sections */
-        .info-box {
-            background: #fff;
-            color: #000;
-            border: 6px solid #000;
+            text-decoration: none;
             padding: 20px;
-            margin-top: 20px;
-            font-size: 0.6rem;
-            line-height: 1.8;
-            text-align: left;
-            position: relative;
-        }
-
-        .info-box h3 {
-            margin-top: 0;
-            color: var(--brick-red);
+            text-align: center;
             font-size: 0.8rem;
             text-transform: uppercase;
+            position: relative;
+            box-shadow: inset 4px 4px 0 rgba(255,255,255,0.3), 4px 4px 0 #000;
+            transition: transform 0.1s;
         }
 
-        .donation-banner {
-            background: var(--coin-yellow);
-            border: 6px solid #000;
-            padding: 15px;
-            margin-top: 20px;
-            color: #000;
-            font-size: 0.7rem;
+        .btn:nth-child(2) { background: #f39c12; }
+        .btn:nth-child(3) { background: #3498db; }
+        .btn:nth-child(4) { background: #9b59b6; }
+
+        .btn:active { transform: translate(4px, 4px); box-shadow: none; }
+        .btn:hover { filter: brightness(1.2); cursor: pointer; }
+
+        /* --- GROUND SECTION --- */
+        .ground-section {
+            background-color: var(--ground-brown);
+            border-top: 15px solid #2ecc71;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            background-image: 
+                linear-gradient(45deg, var(--ground-light) 25%, transparent 25%, transparent 75%, var(--ground-light) 75%, var(--ground-light)), 
+                linear-gradient(45deg, var(--ground-light) 25%, transparent 25%, transparent 75%, var(--ground-light) 75%, var(--ground-light));
+            background-size: 20px 20px;
+            z-index: 10; 
         }
 
-        .gcash-number {
-            display: block;
-            background: #000;
-            color: var(--coin-yellow);
-            padding: 10px;
-            margin-top: 10px;
-            letter-spacing: 2px;
+        .info-card {
+            background: #fff; color: #000; border: 4px solid #000; padding: 20px;
+            max-width: 700px; width: 100%; font-size: 0.7rem; line-height: 1.8;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.5); position: relative;
+        }
+
+        .donate-block {
+            background: var(--coin-gold); width: 100%; max-width: 600px; padding: 25px;
+            text-align: center; border: 4px solid #000; color: #000;
+            box-shadow: inset 6px 6px 0 #fff, inset -6px -6px 0 var(--coin-shadow), 8px 8px 0 rgba(0,0,0,0.5);
+            animation: pulseBlock 1.5s infinite alternate;
+        }
+        @keyframes pulseBlock { from { transform: scale(1); } to { transform: scale(1.02); } }
+        .gcash-code {
+            background: #000; color: #fff; display: block; margin-top: 15px;
+            padding: 10px; font-family: monospace; font-size: 1rem; border: 2px solid #fff; letter-spacing: 2px;
         }
 
         @media (max-width: 600px) {
-            .main-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 1.2rem; }
+            .menu-inner { grid-template-columns: 1fr; }
+            h1 { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="cloud" style="top: 10%; left: -10%;"></div>
-    <div class="cloud" style="top: 25%; right: -20%; animation-delay: -20s;"></div>
+    <section class="sky-section">
+        <h1>MASTER<br>DIRECTORY</h1>
 
-    <div class="main-wrapper">
-        <div class="menu-container">
-            <h1>MASTER<br>DIRECTORY</h1>
-            <div class="main-grid">
-                <a href="games.html" class="menu-item">GAMES</a>
-                <a href="tools.html" class="menu-item">TOOLS</a>
-                <a href="entertainment.html" class="menu-item">ENTERTAINMENT</a>
-                <a href="others.html" class="menu-item">OTHERS</a>
+        <div class="menu-frame">
+            <div class="menu-inner">
+                <a href="games.html" class="btn">START GAME</a>
+                <a href="tools.html" class="btn">TOOLS & AI</a>
+                <a href="entertainment.html" class="btn">ENTERTAINMENT</a>
+                <a href="others.html" class="btn">EXTRAS</a>
             </div>
         </div>
 
-        <div class="info-box">
-            <h3>[ ABOUT PROJECT ]</h3>
-            <p>Welcome to the ultimate hub! This directory is a curated collection of AI tools, retro games, and productivity resources designed for easy access. Explore the pixelated world of web tools!</p>
+        <div class="character-stage">
+            <img src="https://media.giphy.com/media/gR2FAWPWEEW1zhOWvy/giphy.gif" class="sprite kirby-walk" alt="Kirby">
         </div>
 
-        <div class="donation-banner">
-            BUY ME A COIN? (DONATE)
-            <span class="gcash-number">GCASH: 09610785576</span>
+    </section>
+
+    <section class="ground-section">
+        <div class="info-card">
+            <strong style="color:#d35400">[ ABOUT THIS WORLD ]</strong><br><br>
+            Welcome, Traveler! This is the central hub for all my resources. Select a stage above to access Retro Games, AI Tools, and more.
         </div>
-    </div>
+
+        <div class="donate-block">
+            <div>[ ? ] DONATION BOX [ ? ]</div>
+            <div class="gcash-code">GCASH: 09610785576</div>
+        </div>
+    </section>
 
 </body>
 </html>
